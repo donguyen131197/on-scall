@@ -1,0 +1,351 @@
+<nav class="vc-navbar">
+    <img src="assets/imgs/logo.svg" class="vc-logo">
+    <div class="right-section">
+        <div class="nav-section">
+            <div class="avatar vc-dropdown-container">
+                <span (click)="showDropdown($event)">D</span>
+                <div class="vc-dropdown">
+                    <div class="dropdown-group">
+                        <div class="title-item">
+                            <span>nguyendhn@vng.com.vn</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-group">
+                        <div class="menu-item">
+                            <svg class="vcicon icon-logout">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-logout"></use>
+                            </svg>
+                            <span>Log out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-content">
+    <div class="vc-left-menu">
+        <div class="header">
+            <div class="page-logo">
+                <img src="assets/imgs/on-call-logo.svg" class=logo>
+            </div>
+            <div class="page-title">
+                <div class="breadcrumb">Home</div>
+                <div class="service-name">On-call Escalation</div>
+            </div>
+            <div class="toggle-icon">
+                <svg class="vcicon icon-menu-icon-close">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-menu-icon-close"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="item-group">
+            <a class="item">
+                <svg class="vcicon icon-home">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-home"></use>
+                </svg>
+                <span>Overview</span>
+            </a>
+            <a class="item active">
+                <svg class="vcicon icon-incident">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-incident"></use>
+                </svg>
+                <span>Incident</span>
+            </a>
+            <a class="item" href="font.html">
+                <svg class="vcicon icon-service">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-service"></use>
+                </svg>
+                <span>Service</span>
+            </a>
+            <a class="item" href="layout.html">
+                <svg class="vcicon icon-escalation-policy">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-escalation-policy"></use>
+                </svg>
+                <span>Escalation policy</span>
+            </a>
+        </div>
+    </div>
+    <div class="main-content with-leftmenu">
+        <div class="vc-base-bar">
+            <div class="main-bar">
+                <div class="page-header">
+                    <div class="breadcrumb back-action">
+                        <svg class="vcicon icon-back">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-back"></use>
+                        </svg>
+                        <span>Incident</span>
+                    </div>
+                    <div class="page-title">
+                        <span>Incident</span>
+                        <span class="badge upper-badge danger">Triggered</span>
+                    </div>
+                    <div class="page-description">832fh9832f4341eq</div>
+                </div>
+                <div class="bulletin btn-group">
+                    <button type="button" class="btn btn-default other">
+                        <svg class="vcicon icon-acknowledged">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-acknowledged"></use>
+                        </svg>
+                        <span>Acknowledge</span>
+                    </button>
+                    <button type="button" class="btn btn-default other">
+                        <svg class="vcicon icon-reassign">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-reassign"></use>
+                        </svg>
+                        <span>Reassign</span>
+                    </button>
+                    <button type="button" class="btn btn-default create">
+                        <svg class="vcicon icon-save">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-save"></use>
+                        </svg>
+                        <span>Resolve</span>
+                    </button>
+                    <button type="button" class="btn btn-default edit">
+                        <svg class="vcicon icon-edit">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-edit"></use>
+                        </svg>
+                        <span>Edit</span>
+                    </button>
+                </div>
+            </div>
+            <div class="action-bar tab-bar">
+                <ul class="tab-group">
+                    <li id="info-tab" (click)="tabAction($event)">
+                        <svg class="vcicon icon-info">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-info"></use>
+                        </svg>
+                        <span>Information</span>
+                    </li>
+                    <li id="alert-tab" class="chosen" (click)="tabAction($event)">
+                        <svg class="vcicon icon-alert">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-alert"></use>
+                        </svg>
+                        <span>Alert</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="info-content" class="standard-content" style="display: none;">
+
+            <div class="open-period">
+                <span>This incident has been open for</span>
+                <span class="period">1 day 19 hours 40 minutes</span>
+            </div>
+
+            <div class="info-container">
+                <div class="column-info col-2">
+                    <div class="col">
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">ID</div>
+                            <div class="value vc-col-8">321</div>
+                        </div>
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Name</div>
+                            <div class="value vc-col-8">incident-1</div>
+                        </div>
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Status</div>
+                            <div class="value vc-col-8">
+                                <span class="badge upper-badge danger">Triggered</span>
+                            </div>
+                        </div>
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Urgency</div>
+                            <div class="value vc-col-8">High</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Created on</div>
+                            <div class="value vc-col-8">2:59 PM, 26/8/2020</div>
+                        </div>
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Service</div>
+                            <div class="value vc-col-8">
+                                <a href="incident/serviceid">service-1</a>
+                            </div>
+                        </div>
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Escalation policy</div>
+                            <div class="value vc-col-8">
+                                <a href="incident/serviceid">esc-policy-1</a>
+                            </div>
+                        </div>
+                        <div class="pair-item vc-row">
+                            <div class="title vc-col-4">Assigned to</div>
+                            <div class="value vc-col-8">
+                                <a>nguyendhn</a>,
+                                <a>vund3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" style="margin-top: 30px;">
+
+                <div class="section-header">
+                    <div class="section-title">History</div>
+                    <div class="section-description">Full activity history of this incident</div>
+                </div>
+
+                <table class="vc-table">
+
+                    <thead>
+                        <th style="width: 30%;">
+                            <span>Time</span>
+                            <svg class="vcicon icon-unsort sort-btn">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
+                            </svg>
+                        </th>
+                        <th>
+                            <span>Activity</span>
+                        </th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>10:40 AM, 27/8/2020</td>
+                            <td class="activity-log">
+                                <div class="solve-log">
+                                    <div>
+                                        <span class="act-name solved">Solved</span>
+                                        by
+                                        <a>nguyendhn</a>
+                                    </div>
+                                    <div>
+                                        <span class="des-title">Resolution note:</span>
+                                        <span>Resolution note: Processing fixing bugs</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10:39 AM, 27/8/2020</td>
+                            <td class="activity-log">
+                                <div class="acknowledge-log">
+                                    <span class="act-name acknowledged">Acknowledged</span>
+                                    by
+                                    <a>nguyendhn</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2:59 PM, 26/8/2020</td>
+                            <td class="activity-log">
+                                <div class="notify-log">
+                                    <span class="act-name">Notified</span>
+                                    <a style="margin-left: 5px;">nguyendhn</a>
+                                    via
+                                    <span>email</span>
+                                    at
+                                    <a>do.nguyen131197@gmail.com</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2:59 PM, 26/8/2020</td>
+                            <td class="activity-log">
+                                <div class="trigger-log">
+                                    <span class="act-name triggered">Triggered</span>
+                                    by
+                                    <a>nguyendhn</a>
+                                    and 
+                                    <span class="act-name">assigned</span>
+                                    to
+                                    <a>nguyendhn</a>
+                                    and 
+                                    <a>vund3</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+        <div id="alert-content" class="standard-content">
+
+            <table class="vc-table">
+
+                <thead>
+                    <th style="width: 30%;">
+                        <span>Time</span>
+                        <svg class="vcicon icon-unsort sort-btn">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
+                        </svg>
+                    </th>
+                    <th>
+                        <span>Activity</span>
+                    </th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>10:40 AM, 27/8/2020</td>
+                        <td class="activity-log">
+                            <div class="solve-log">
+                                <div>
+                                    <span class="act-name solved">Solved</span>
+                                    by
+                                    <a>nguyendhn</a>
+                                </div>
+                                <div>
+                                    <span class="des-title">Resolution note:</span>
+                                    <span>Resolution note: Processing fixing bugs</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10:39 AM, 27/8/2020</td>
+                        <td class="activity-log">
+                            <div class="acknowledge-log">
+                                <span class="act-name acknowledged">Acknowledged</span>
+                                by
+                                <a>nguyendhn</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2:59 PM, 26/8/2020</td>
+                        <td class="activity-log">
+                            <div class="notify-log">
+                                <span class="act-name">Notified</span>
+                                <a style="margin-left: 5px;">nguyendhn</a>
+                                via
+                                <span>email</span>
+                                at
+                                <a>do.nguyen131197@gmail.com</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2:59 PM, 26/8/2020</td>
+                        <td class="activity-log">
+                            <div class="trigger-log">
+                                <span class="act-name triggered">Triggered</span>
+                                by
+                                <a>nguyendhn</a>
+                                and 
+                                <span class="act-name">assigned</span>
+                                to
+                                <a>nguyendhn</a>
+                                and 
+                                <a>vund3</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,27 @@
+@import "variables";
+
+.status-tr-indicator {
+    position: relative;
+
+    &:after {
+        content: " ";
+        position: absolute;
+        width: 5px;
+        height: 40px;
+        top: calc(50% - 20px);
+        left: 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    &.danger:after {
+        background: $color-red-orange-100;
+    }
+
+    &.success:after {
+        background: $color-apple-100;
+    }
+
+    &.warning:after {
+        background: $color-web-orange-100;
+    }
+}

@@ -1,0 +1,50 @@
+@import "variables";
+
+.status-tr-indicator {
+    position: relative;
+
+    &:after {
+        content: " ";
+        position: absolute;
+        width: 5px;
+        height: 40px;
+        top: calc(50% - 20px);
+        left: 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    &.danger:after {
+        background: $color-red-orange-100;
+    }
+
+    &.success:after {
+        background: $color-apple-100;
+    }
+
+    &.warning:after {
+        background: $color-web-orange-100;
+    }
+}
+
+.open-incident {
+    color: $color-grey-750-100;
+    margin-bottom: 5px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &.noteworthy {
+        font-weight: 600;
+        color: $color-royal-blue-100;
+    }
+
+    .count {
+        font-weight: 700;
+        margin-right: 5px;
+    }
+}
+
+.no-incident {
+    color: $color-grey-650-100;
+}

@@ -1,0 +1,161 @@
+<div class="vc-modal-backdrop">
+    <div class="vc-modal">
+        <div class="modal-dialog" style="width: 600px">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <span class="title">Add Channel</span>
+                </div>
+            </div>
+            <div class="modal-body normal-padding">
+                <div>
+                    <span>Connect Skype group or Slack channel to send notifications about incidents to.</span>
+                </div>
+                <form style="margin-top: 20px">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="channel-name">Channel name</label>
+                        <input id="channel-name" type="text" class="vc-input" placeholder="Name" aria-label="channel-name"
+                            aria-describedby="channel-name-des" style="width: 400px">
+                    </div>
+                    <div class="form-group">
+                        <label>Channel type</label>
+                        <div class="vc-select" style="display: block; width: 300px;">
+                            <select id="incident-service" aria-label="channel-type"
+                                aria-describedby="incident-service-des" (click)="changeChannelType($event)">
+                                <option value="slack" name="showing-select">Slack</option>
+                                <option value="skype" name="showing-select">Skype</option>
+                            </select>
+                            <svg class="vcicon icon-gr-expand">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="slack-authen" *ngIf="isShowingSlackAuthen">
+                        <div class="notice info" style="margin-top: 15px; margin-bottom: 10px;">
+                            <div class="notice-title">Slack authorization</div>
+                            <div>
+                                <span>When clicking <b>Save</b>, you’ll be redirected to authorize your Slack account
+                                    and
+                                    select
+                                    a channel to integrate.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="skype-authen" *ngIf="isShowingSkypeIntegration">
+                        <div class="notice info" style="margin-top: 15px; margin-bottom: 10px;">
+                            <div class="notice-title">Skype integration</div>
+                            <div>
+                                <span>To integrate Skype, click the following link to start a Skype group with our
+                                    chatbot then text “whoami” to receive an ID for the field below.</span>
+                                <div class="copiable-text">
+                                    <a href="#" class="link">https://join.skype.com/bot/00a9e389-8c4a-4667-9c42-33bbb9bdaadd</a>
+                                    <div class="btn-container">
+                                        <button type="button" class="btn icon-btn default" data-title="Copy this link"
+                                            (click)="copyLink($event)">
+                                            <svg class="vcicon icon-copy">
+                                                <use xlink:href="assets/vcicon/icons.svg#icon-copy"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label for="skype-id">Skype ID</label>
+                            <input id="skype-id" type="text" class="vc-input" placeholder="ID generated above"
+                                aria-label="skype-id" aria-describedby="skype-id">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body normal-padding seperated">
+                <div class="expand-btn" (click)="isShowingAdvanced = !isShowingAdvanced">
+                    <span>Advanced options</span>
+                    <svg class="vcicon icon-expand-sm" [ngClass]="{'expanded':isShowingAdvanced}">
+                        <use xlink:href="assets/vcicon/icons.svg#icon-expand-sm"></use>
+                    </svg>
+                </div>
+                <div *ngIf="isShowingAdvanced">
+
+                    <div class="form-group" style="margin-top: 20px">
+                        <label for="incident-des">Description</label>
+                        <label id="incident-des-des" class="help-text">
+                            Select actions you want to send to your channel. Whenever these actions are triggered, they
+                            will send a short message.
+                        </label>
+                        <div class="selection-list stacked items-distant" style="margin-top: 15px;">
+                            <label class="vc-checkbox">
+                                <input type="checkbox" checked name="action">
+                                <span class="checkmark"></span>
+                                <span class="cb-label">
+                                    <div class="label">Escalations</div>
+                                </span>
+                            </label>
+                            <label class="vc-checkbox">
+                                <input type="checkbox" checked name="action">
+                                <span class="checkmark"></span>
+                                <span class="cb-label">
+                                    <div class="label">Resolves</div>
+                                </span>
+                            </label>
+                            <label class="vc-checkbox">
+                                <input type="checkbox" checked name="action">
+                                <span class="checkmark"></span>
+                                <span class="cb-label">
+                                    <div class="label">Acknowledges</div>
+                                </span>
+                            </label>
+                            <label class="vc-checkbox">
+                                <input type="checkbox" checked name="action">
+                                <span class="checkmark"></span>
+                                <span class="cb-label">
+                                    <div class="label">Reassigns</div>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <label for="incident-des">Urgency</label>
+                        <label id="incident-des-des" class="help-text">
+                            You will receive notifications for incidents of selected urgencies only.
+                        </label>
+                        <div class="selection-list stacked items-distant" style="margin-top: 15px;">
+                            <label class="vc-checkbox">
+                                <input type="checkbox" checked name="urgency">
+                                <span class="checkmark"></span>
+                                <span class="cb-label">
+                                    <div class="label">High</div>
+                                </span>
+                            </label>
+                            <label class="vc-checkbox">
+                                <input type="checkbox" checked name="urgency">
+                                <span class="checkmark"></span>
+                                <span class="cb-label">
+                                    <div class="label">Low</div>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="right-section">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default close">
+                            <svg class="vcicon icon-close">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-close"></use>
+                            </svg>
+                            <span>Close</span>
+                        </button>
+                        <button type="button" class="btn btn-default create">
+                            <svg class="vcicon icon-add-channel">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-add-channel"></use>
+                            </svg>
+                            <span>Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

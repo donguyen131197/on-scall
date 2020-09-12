@@ -1,0 +1,55 @@
+<div class="vc-modal-backdrop">
+    <div class="vc-modal">
+        <div class="modal-dialog" style="width: 600px">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <span class="title">Create Routing key</span>
+                </div>
+            </div>
+            <div class="modal-body normal-padding">
+                <div>
+                    <span>A routing key will help you integrate monitoring systems with On-scall Escalation to trigger
+                        automatic incidents. Give you key a name and your key will be generated later.</span>
+                </div>
+                <form style="margin-top: 20px">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="integration-name">Integration name</label>
+                        <input id="integration-name" type="text" class="vc-input" placeholder="Name" aria-label="name"
+                            aria-describedby="integration-name-des">
+                    </div>
+                    <div class="form-group">
+                        <label for="integration-type">Integration type</label>
+                        <div style="margin-top: 5px;">
+                            <label class="vc-radio radio-box">
+                                <input type="radio" checked name="integration-type">
+                                <span class="checkmark"></span>
+                                <div class="rb-label">
+                                    <div class="label">API token</div>
+                                    <div class="label-des">Use our API for integration</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="right-section">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default close">
+                            <svg class="vcicon icon-close">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-close"></use>
+                            </svg>
+                            <span>Close</span>
+                        </button>
+                        <button type="button" class="btn btn-default create">
+                            <svg class="vcicon icon-create-routing-key">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-create-routing-key"></use>
+                            </svg>
+                            <span>Create</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

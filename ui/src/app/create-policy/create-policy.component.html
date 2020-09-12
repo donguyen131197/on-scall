@@ -1,0 +1,158 @@
+<nav class="vc-navbar">
+    <img src="assets/imgs/logo.svg" class="vc-logo">
+    <div class="right-section">
+        <div class="nav-section">
+            <div class="avatar vc-dropdown-container">
+                <span (click)="showDropdown($event)">D</span>
+                <div class="vc-dropdown">
+                    <div class="dropdown-group">
+                        <div class="title-item">
+                            <span>nguyendhn@vng.com.vn</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-group">
+                        <div class="menu-item">
+                            <svg class="vcicon icon-logout">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-logout"></use>
+                            </svg>
+                            <span>Log out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-content">
+    <div class="main-content">
+        <div class="vc-base-bar fixed full-width">
+            <div class="main-bar">
+                <div class="page-header">
+                    <div class="page-title">Create Escalation policy</div>
+                    <div class="page-description">
+                        <span>To create an Escalation policy, you will need to give it a name and a description then set
+                            up escalation rules for it.</span>
+                    </div>
+                </div>
+                <div class="bulletin">
+                    <button type="button" class="btn btn-default create">
+                        <svg class="vcicon icon-create-esc-policy">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-create-escale-policy"></use>
+                        </svg>
+                        <span>Create</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="standard-content big-padding" style="padding-top: 97px;">
+
+            <div class="big-section" style="width: 75%">
+
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="title">Policy information</div>
+                        <div class="description">Give us some basic information for the new policy</div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="policy-name">Policy name</label>
+                        <input id="policy-name" type="text" class="vc-input" placeholder="Name" aria-label="name"
+                            aria-describedby="policy-name-des" style="width: 500px">
+                        <label id="policy-name-des" class="help-text">
+                            Only letters (a-z, A-Z, 0-9, '.', '@', '_', '-', space) are allowed. Your input data length
+                            must
+                            be between 5 and 50.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="policy-des">Description</label>
+                        <input id="policy-des" type="text" class="vc-input" placeholder="Description"
+                            aria-label="description" aria-describedby="policy-des-des" style="width: 500px">
+                        <label id="policy-des-des" class="help-text">
+                            Optional. Giving your policy a description will help you distinguish the policies better.
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="big-section" style="width: 80%; margin-top: 50px; margin-bottom: 20px;">
+
+                <div class="section-header" style="width: 75%;">
+                    <div class="section-title">
+                        <div class="title">Escalation rule</div>
+                        <div class="description">
+                            <p>
+                                Escalation rule consists of levels, each of which you will add users to and set up a
+                                timeout for. Whenever there is an incident in a service, the users will be notified and
+                                after the timeout, this rule will escalate to the next levels if no one acknowledges the
+                                incident.
+                            </p>
+                            <p style="margin-top: 10px;">
+                                Drag the numbers to rearrange the levels.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <ul class="rule-list">
+                        <li class="rule-box" order="1">
+                            <div class="section notify-section">
+                                <div class="form-group">
+                                    <label for="notify-to">Notify the following users:</label>
+                                    <input id="notify-to" type="text" class="vc-input" placeholder="Notify users"
+                                        aria-label="users" aria-describedby="notify-to-des">
+                                    <small id="notify-to-des" class="help-text">
+                                        You can add maximum 50 users
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="section timeout-section">
+                                <div class="form-group">
+                                    <label for="timeout-input">Escalates after</label>
+                                    <div class="vc-input-with-subfix">
+                                        <input id="timeout-input" type="number" placeholder="Timeout"
+                                            aria-label="timeout" aria-describedby="timeout-input-des"
+                                            style="width: 100px">
+                                        <span class="subfix">
+                                            <span>minutes</span>
+                                        </span>
+                                    </div>
+                                    <small id="timeout-input-des" class="help-text">
+                                        At least 1 minute
+                                    </small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <button type="button" class="add-rule-btn btn btn-default other">
+                                <svg class="vcicon icon-create">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-create"></use>
+                                </svg>
+                                <span>Add a new level</span>
+                            </button>
+                        </li>
+                        <li class="repetition">
+                            <label class="vc-checkbox">
+                                <input type="checkbox" [(ngModel)]="isRepetitionEnabled" name="repetition">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="repetition-label">
+                                <span>Repeat rule for</span>
+                                <input id="repetition-amount" type="number" class="vc-input" value="1" [disabled]="!isRepetitionEnabled">
+                                <span>times if no one acknowledges</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
