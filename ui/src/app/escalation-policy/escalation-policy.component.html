@@ -109,7 +109,8 @@
                         </button>
                     </div>
                     <div class="action-group btn-group">
-                        <button type="button" class="btn icon-btn default" data-title="Reload incidents" data-title-left>
+                        <button type="button" class="btn icon-btn default" data-title="Reload incidents"
+                            data-title-left>
                             <svg class="vcicon icon-reload">
                                 <use xlink:href="assets/vcicon/icons.svg#icon-reload"></use>
                             </svg>
@@ -123,7 +124,8 @@
 
             <div class="intro-mini">
                 <div class="intro-text">
-                    <p>Escalation policies define who will be notified when there is an incident in a service and who the
+                    <p>Escalation policies define who will be notified when there is an incident in a service and who
+                        the
                         rules will escalate to notify after a timeout.</p>
                 </div>
                 <a href="#" class="intro-guide">
@@ -145,16 +147,13 @@
                     <thead>
                         <th>
                             <span>Name</span>
-                            <svg class="vcicon icon-unsort sort-btn">
-                                <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
-                            </svg>
                         </th>
                         <th class="no-seperate">
                             <span>Description</span>
                         </th>
                         <th class="single-icon-action-col"></th>
                     </thead>
-    
+
                     <tbody>
                         <tr id="esc-policy-1">
                             <td style="width: 40%">
@@ -174,9 +173,80 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr class="detail-row" data-for="esc-policy-1">
+                        <tr class="detail-row">
                             <td colspan="3">
-                                abc
+                                <div class="policy-detail-container">
+                                    <div class="rule">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Escalation rule</div>
+                                                    <div class="description">Who to notify about the incidents and when
+                                                        they are notified </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <ul class="rule-list">
+                                                    <li class="rule-box" order="1">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">do.nguyen131197@gmail.com</span>
+                                                                <span class="user-pill">vund3</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="rule-box" order="2">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">vinhph2</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="repetition">
+                                                        <div>
+                                                            <span>Repeat rule for</span>
+                                                            <span class="repetition-count">3 times</span>
+                                                            <span>if no one acknowledges</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="service">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Inbound services</div>
+                                                    <div class="description">Services that are using this policy</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <div>
+                                                    No services are using this policy
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <tr id="esc-policy-2">
@@ -184,7 +254,7 @@
                                 <svg class="vcicon icon-collapse-sm expand-btn" (click)="showDetail($event)">
                                     <use xlink:href="assets/vcicon/icons.svg#icon-collapse-sm"></use>
                                 </svg>
-                                <span class="primary">esc-policy-1</span>
+                                <span class="primary">esc-policy-2</span>
                             </td>
                             <td width="calc(60% - 40px)">
                                 Escalation policy for vStorage
@@ -197,8 +267,294 @@
                                 </button>
                             </td>
                         </tr>
+                        <tr class="detail-row">
+                            <td colspan="3">
+                                <div class="policy-detail-container">
+                                    <div class="rule">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Escalation rule</div>
+                                                    <div class="description">Who to notify about the incidents and when
+                                                        they are notified </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <ul class="rule-list">
+                                                    <li class="rule-box" order="1">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">do.nguyen131197@gmail.com</span>
+                                                                <span class="user-pill">vund3</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="rule-box" order="2">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">vinhph2</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="repetition">
+                                                        <div>
+                                                            <span>Repeat rule for</span>
+                                                            <span class="repetition-count">3 times</span>
+                                                            <span>if no one acknowledges</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="service">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Inbound services</div>
+                                                    <div class="description">Services that are using this policy</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <div>
+                                                    <div class="service-count-text">
+                                                        <span class="service-count">1</span> services are using this
+                                                        policy
+                                                    </div>
+                                                    <ul class="inbound-service-list">
+                                                        <li>
+                                                            <a href="#">service-1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">service-2</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="esc-policy-3">
+                            <td width="40%">
+                                <svg class="vcicon icon-collapse-sm expand-btn" (click)="showDetail($event)">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-collapse-sm"></use>
+                                </svg>
+                                <span class="primary">esc-policy-3</span>
+                            </td>
+                            <td width="calc(60% - 40px)">
+                                Escalation policy for vStorage
+                            </td>
+                            <td>
+                                <button type="button" class="btn icon-btn default" data-title="Menu" data-title-left>
+                                    <svg class="vcicon icon-menu">
+                                        <use xlink:href="assets/vcicon/icons.svg#icon-menu"></use>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="detail-row">
+                            <td colspan="3">
+                                <div class="policy-detail-container">
+                                    <div class="rule">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Escalation rule</div>
+                                                    <div class="description">Who to notify about the incidents and when
+                                                        they are notified </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <ul class="rule-list">
+                                                    <li class="rule-box" order="1">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">do.nguyen131197@gmail.com</span>
+                                                                <span class="user-pill">vund3</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="rule-box" order="2">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">vinhph2</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="repetition">
+                                                        <div>
+                                                            <span>Repeat rule for</span>
+                                                            <span class="repetition-count">3 times</span>
+                                                            <span>if no one acknowledges</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="service">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Inbound services</div>
+                                                    <div class="description">Services that are using this policy</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <div>
+                                                    No services are using this policy
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="esc-policy-4">
+                            <td width="40%">
+                                <svg class="vcicon icon-collapse-sm expand-btn" (click)="showDetail($event)">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-collapse-sm"></use>
+                                </svg>
+                                <span class="primary">esc-policy-4</span>
+                            </td>
+                            <td width="calc(60% - 40px)">
+                                Escalation policy for vStorage
+                            </td>
+                            <td>
+                                <button type="button" class="btn icon-btn default" data-title="Menu" data-title-left>
+                                    <svg class="vcicon icon-menu">
+                                        <use xlink:href="assets/vcicon/icons.svg#icon-menu"></use>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="detail-row">
+                            <td colspan="3">
+                                <div class="policy-detail-container">
+                                    <div class="rule">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Escalation rule</div>
+                                                    <div class="description">Who to notify about the incidents and when
+                                                        they are notified </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <ul class="rule-list">
+                                                    <li class="rule-box" order="1">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">do.nguyen131197@gmail.com</span>
+                                                                <span class="user-pill">vund3</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="rule-box" order="2">
+                                                        <div class="section notify-section">
+                                                            <div>Notify the following users:</div>
+                                                            <div class="user-list">
+                                                                <span class="user-pill">vinhph2</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="section timeout-section">
+                                                            <div>Escalates after
+                                                                <span class="time-count">5 minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="repetition">
+                                                        <div>
+                                                            <span>Repeat rule for</span>
+                                                            <span class="repetition-count">3 times</span>
+                                                            <span>if no one acknowledges</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="service">
+                                        <div class="section">
+
+                                            <div class="section-header">
+                                                <div class="section-title">
+                                                    <div class="title">Inbound services</div>
+                                                    <div class="description">Services that are using this policy</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="section-content">
+                                                <div>
+                                                    <div class="service-count-text">
+                                                        <span class="service-count">1</span> services are using this
+                                                        policy
+                                                    </div>
+                                                    <ul class="inbound-service-list">
+                                                        <li>
+                                                            <a href="#">service-1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">service-2</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
-    
+
                 </table>
             </div>
 

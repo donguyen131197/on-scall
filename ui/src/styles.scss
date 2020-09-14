@@ -42,7 +42,7 @@ label {
     background: $color-regal-blue-100;
     color: $color-white-100;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-    z-index: 10;
+    z-index: 15;
     top: 0;
 
     .vc-logo {
@@ -138,6 +138,10 @@ label {
             .vcicon {
                 fill: $color-royal-blue-100;
             }
+        }
+
+        &:hover {
+            text-decoration: none;
         }
     }
 
@@ -1442,7 +1446,7 @@ input::placeholder {
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.02);
         }
 
-        &:last-child td {
+        &:visible:last-child td {
             border-bottom: 0;
         }
 

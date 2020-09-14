@@ -17,18 +17,175 @@
 
         tr.detail-row {
             display: none;
+
+            td {
+                background: $color-grey-100-100;
+                border-bottom-width: 5px;
+            }
+
+            &.showing {
+                display: table-row;
+            }
+
         }
 
-        tr.show {
+        tr.showing {
             .expand-btn {
-                transform: rotate(0deg);
+                transform: rotate(180deg);
             }
         }
     }
+}
 
-    &.duplicated {
-        thead {
-            display: none;
+.policy-detail-container {
+    display: flex;
+    width: 100%;
+    padding: 8px 15px;
+
+    .rule {
+        width: calc(67% - 30px);
+    }
+
+    .service {
+        width: calc(33% - 30px);
+        padding-left: 60px;
+
+        .service-count-text {
+            margin-bottom: 15px;
+
+            .service-count {
+                font-weight: 600;
+                color: $color-royal-blue-100;
+            }
         }
+
+        .inbound-service-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+@import "variables";
+
+.rule-list {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+
+    > * {
+        position: relative;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        z-index: 1;
+    }
+
+    .rule-box {
+        display: flex;
+        position: relative;
+        background: $color-white-100;
+        border: 1px solid $color-grey-350-100;
+
+        .section {
+            padding: 10px 20px;
+
+            &.notify-section {
+                flex: 1 100%;
+                padding-left: 46px;
+                box-sizing: border-box;
+
+                .user-list {
+                    width: 100%;
+                    margin-top: 5px;
+
+                    .user-pill {
+                        display: inline-block;
+                        font-weight: 600;
+                        color: $color-royal-blue-100;
+                        background: $color-grey-250-100;
+                        padding: 5px 10px;
+                        margin-right: 5px;
+                        border-radius: 20px;
+                    }
+                }
+            }
+
+            &.timeout-section {
+                flex: 0 1 auto;
+                white-space: nowrap;
+                box-sizing: border-box;
+
+                .time-count {
+                    font-weight: 600;
+                    color: $color-royal-blue-100;
+                }
+            }
+        }
+
+        &:before {
+            content: attr(order);
+            display: block;
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: $color-royal-blue-100;
+            color: $color-white-100;
+            font-weight: 600;
+            text-align: center;
+            padding-top: 5px;
+            top: 10px;
+            left: 10px;
+            border-radius: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    .add-rule-btn {
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .repetition {
+        display: inline-block;
+        background: $color-white-100;
+        border: 1px solid $color-grey-350-100;
+        padding: 10px 12px;
+
+        .repetition-label {
+            display: inline-block;
+            font-weight: 500;
+            margin-left: 10px;
+
+            .vc-input {
+                display: inline-block;
+                width: 52px;
+                height: 24px;
+                margin: -4px 10px;
+                padding: 0 10px;
+            }
+        }
+
+        .repetition-count {
+            font-weight: 600;
+            color: $color-royal-blue-100;
+            margin: 0 5px;
+        }
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: calc(100% - 30px);
+        width: 1px;
+        background: $color-grey-350-100;
+        top: 10px;
+        left: 23px;
+        z-index: 0;
     }
 }

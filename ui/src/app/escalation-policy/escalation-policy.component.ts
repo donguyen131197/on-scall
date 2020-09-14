@@ -19,17 +19,14 @@ export class EscalationPolicyComponent implements OnInit {
   }
 
   showDetail(event) {
-    let _tr = $(event.currentTarget);
-    let _trId = _tr.attr("id");
-    let _table = _tr.parents(".vc-table");
-    let _policiesContainer = _table.parents(".policies-container");
-    if (_tr.hasClass("showing")) {
-
-    }
-    else {
-      _table.clone().addClass("duplicated").appendTo(_policiesContainer);
-      _table.hide();
-    }
+    const _tr = $(event.currentTarget).parents("tr");
+    const _table = _tr.parents(".vc-table");
+    const _trIndex = _tr.index();
+    const _detailTr = _table.find("tbody tr").filter(function(){
+      return $(this).index() == _trIndex + 1;
+    })
+    _tr.toggleClass("showing");
+    _detailTr.toggleClass("showing");
   }
 
 }
