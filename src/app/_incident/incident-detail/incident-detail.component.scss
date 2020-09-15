@@ -1,0 +1,43 @@
+@import 'variables.scss';
+
+.open-period {
+    width: 100%;
+    background: $color-royal-blue-2;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid $color-royal-blue-8;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    .period {
+        display: inline-block;
+        font-size: 17px;
+        font-weight: 700;
+        color: $color-royal-blue-100;
+        margin-left: 5px;
+    }
+}
+
+.activity-log {
+
+    .act-name {
+        font-weight: 600;
+
+        &.solved {
+            color: $color-apple-100;
+        }
+
+        &.acknowledged {
+            color: $color-web-orange-100;
+        }
+
+        &.triggered {
+            color: $color-red-orange-100;
+        }
+    }
+
+    .des-title {
+        font-weight: 500;
+        color: $color-grey-650-100;
+    }
+}

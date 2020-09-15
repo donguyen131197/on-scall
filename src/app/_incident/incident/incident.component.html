@@ -1,0 +1,277 @@
+<nav class="vc-navbar">
+    <img src="assets/imgs/logo.svg" class="vc-logo">
+    <div class="right-section">
+        <div class="nav-section">
+            <div class="avatar vc-dropdown-container">
+                <span (click)="showDropdown($event)">D</span>
+                <div class="vc-dropdown">
+                    <div class="dropdown-group">
+                        <div class="title-item">
+                            <span>nguyendhn@vng.com.vn</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-group">
+                        <div class="menu-item">
+                            <svg class="vcicon icon-logout">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-logout"></use>
+                            </svg>
+                            <span>Log out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-content">
+    <div class="vc-left-menu">
+        <div class="header">
+            <div class="page-logo">
+                <img src="assets/imgs/on-call-logo.svg" class=logo>
+            </div>
+            <div class="page-title">
+                <div class="breadcrumb">Home</div>
+                <div class="service-name">On-call Escalation</div>
+            </div>
+            <div class="toggle-icon">
+                <svg class="vcicon icon-menu-icon-close">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-menu-icon-close"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="item-group">
+            <a class="item">
+                <svg class="vcicon icon-home">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-home"></use>
+                </svg>
+                <span>Overview</span>
+            </a>
+            <a class="item active">
+                <svg class="vcicon icon-incident">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-incident"></use>
+                </svg>
+                <span>Incident</span>
+            </a>
+            <a class="item" href="service">
+                <svg class="vcicon icon-service">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-service"></use>
+                </svg>
+                <span>Service</span>
+            </a>
+            <a class="item" href="escalation-policy">
+                <svg class="vcicon icon-escalation-policy">
+                    <use xlink:href="assets/vcicon/icons.svg#icon-escalation-policy"></use>
+                </svg>
+                <span>Escalation policy</span>
+            </a>
+        </div>
+    </div>
+    <div class="main-content with-leftmenu">
+        <div class="vc-base-bar">
+            <div class="main-bar">
+                <div class="page-header">
+                    <div class="page-title">Incident</div>
+                </div>
+            </div>
+            <div class="action-bar">
+                <div class="left-section">
+                    <div class="action-group">
+                        <div class="vc-input-with-subfix" style="width: 250px">
+                            <input type="text" placeholder="Search incidents" aria-label="search-incidents">
+                            <span class="subfix">
+                                <svg class="vcicon icon-search">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-search"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="action-group">
+                        <button type="button" class="btn btn-default create" (click)="isShowingCreateModal = true">
+                            <svg class="vcicon icon-create-incident">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-create-incident"></use>
+                            </svg>
+                            <span>Create an Incident</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="right-section icon-btn-rightmost">
+                    <div class="action-group btn-group">
+                        <button type="button" class="btn btn-default other" disabled>
+                            <svg class="vcicon icon-acknowledged">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-acknowledged"></use>
+                            </svg>
+                            <span>Acknowledge</span>
+                        </button>
+                        <button type="button" class="btn btn-default other" disabled>
+                            <svg class="vcicon icon-reassign">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-reassign"></use>
+                            </svg>
+                            <span>Reassign</span>
+                        </button>
+                        <button type="button" class="btn btn-default create" disabled>
+                            <svg class="vcicon icon-save">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-save"></use>
+                            </svg>
+                            <span>Resolve</span>
+                        </button>
+                    </div>
+                    <div class="action-group btn-group">
+                        <button type="button" class="btn icon-btn default" data-title="Reload incidents">
+                            <svg class="vcicon icon-reload">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-reload"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn icon-btn default" data-title="Table settings" data-title-left>
+                            <svg class="vcicon icon-setting">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-setting"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="standard-content small-padding-top">
+
+            <div class="intro-mini">
+                <div class="intro-text">
+                    <p>Escalation policies define who will be notified when there is an incident in a service and who the
+                        rules will escalate to notify after a timeout.</p>
+                </div>
+                <a href="#" class="intro-guide">
+                    <div class="guide-logo">
+                        <svg class="vcicon icon-info">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-info"></use>
+                        </svg>
+                    </div>
+                    <p>What can I do with Escalation policies?</p>
+                    <svg class="vcicon icon-go-to">
+                        <use xlink:href="assets/vcicon/icons.svg#icon-go-to"></use>
+                    </svg>
+                </a>
+            </div>
+
+            <table class="vc-table">
+
+                <thead>
+                    <th class="no-seperate no-content"></th>
+                    <th class="select-col">
+                        <label class="vc-checkbox">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </th>
+                    <th>
+                        <span>Name</span>
+                        <svg class="vcicon icon-unsort sort-btn">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
+                        </svg>
+                    </th>
+                    <th>
+                        <span>Status</span>
+                        <svg class="vcicon icon-unsort sort-btn">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
+                        </svg>
+                    </th>
+                    <th>
+                        <span>Urgency</span>
+                        <svg class="vcicon icon-unsort sort-btn">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
+                        </svg>
+                    </th>
+                    <th>
+                        <span>Service</span>
+                        <svg class="vcicon icon-unsort sort-btn">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-unsort"></use>
+                        </svg>
+                    </th>
+                    <th class="no-seperate">
+                        <span>Assigned to</span>
+                    </th>
+                    <th class="single-icon-action-col"></th>
+                </thead>
+
+                <tbody>
+                    <tr class="incident" *ngFor="let incident of incidents">
+                      <td class="status-tr-indicator" [ngClass]="getClassSatus(incident.status)"></td>
+                      <td>
+                          <label class="vc-checkbox">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                          </label>
+                      </td>
+                      <td>
+                          <div class="secondary">{{incident.id}}</div>
+                          <a href="/incident/{{incident.id}}" class="primary">{{incident.title}}</a>
+                          <div class="tertiary">{{incident.created}}</div>
+                      </td>
+                      <td>
+                          <span class="badge upper-badge" [ngClass]="getClassSatus(incident.status)">{{ incident.status }}</span>
+                      </td>
+                      <td>
+                        {{ incident.urgency }}
+                      </td>
+                      <td>
+                          <a href="/service/{{ incident.service_id }}">{{ incident.service_name }}</a>
+                      </td>
+                      <td>
+                          <a>nguyendhn</a>,
+                          <a>vund</a>
+                      </td>
+                      <td>
+                          <button type="button" class="btn icon-btn edit" data-title="Edit incident" data-title-left>
+                              <svg class="vcicon icon-edit">
+                                  <use xlink:href="assets/vcicon/icons.svg#icon-edit"></use>
+                              </svg>
+                          </button>
+                      </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="pagination-complex">
+                <div class="total-record-section">
+                    <span>Total: {{incidents.length}}</span>
+                </div>
+                <ul class="pagination">
+                    <li class="page-move disabled">
+                        <svg class="vcicon icon-page-prev">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-page-prev"></use>
+                        </svg>
+                    </li>
+                    <li class="page-number chosen">
+                        <span>1</span>
+                    </li>
+                    <li class="page-number">
+                        <span>2</span>
+                    </li>
+                    <li class="page-move">
+                        <svg class="vcicon icon-page-next">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-page-next"></use>
+                        </svg>
+                    </li>
+                </ul>
+                <div class="show-record-section">
+                    <span>Show:</span>
+                    <div class="vc-select">
+                        <select>
+                            <option value="1" name="showing-select">5</option>
+                            <option value="2" name="showing-select">10</option>
+                            <option value="3" name="showing-select">20</option>
+                            <option value="4" name="showing-select">30</option>
+                            <option value="5" name="showing-select">50</option>
+                        </select>
+                        <svg class="vcicon icon-gr-expand">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-create-incident *ngIf='isShowingCreateModal' (newCloseEvent)="close()"></app-create-incident>

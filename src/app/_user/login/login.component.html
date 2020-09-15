@@ -1,0 +1,42 @@
+<nav class="vc-navbar not-logged-in">
+    <img src="assets/imgs/logo.svg" class="vc-logo">
+</nav>
+
+<div class="main-content">
+    <div class="left-section">
+        <div class="content">
+            <div class="masthead">
+                <img src="assets/imgs/on-call-logo.svg">
+                <span>On-call Escalation</span>
+            </div>
+            <img src="assets/imgs/login-illustration.svg">
+        </div>
+    </div>
+    <div class="right-section">
+        <div class="login-form">
+            <div class="title">Log in</div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" class="form-control vc-input" formControlName="email" style="height: 42px;" placeholder="Email" aria-label="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required" style="color: red;font-weight: bold;">Email is required</div>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="vc-input-with-subfix" style="height: 42px;">
+                        <input id="password" type="password" placeholder="Password" class="form-control" formControlName="password" aria-label="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <span class="subfix clickable" (click)=passToggle($event)>
+                            <svg class="vcicon icon-overview"><use xlink:href="assets/vcicon/icons.svg#icon-overview"></use></svg>
+                        </span>
+                    </div>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required" style="color: red;font-weight: bold;">Password is required</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-large other" style="margin-top: 30px; width: 100%;">Log in</button>
+            </form>
+        </div>
+    </div>
+</div>

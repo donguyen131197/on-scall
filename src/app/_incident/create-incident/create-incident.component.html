@@ -1,0 +1,92 @@
+<div class="vc-modal-backdrop">
+    <div class="vc-modal">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="modal-dialog" style="width: 600px">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <span class="title">Create Incident</span>
+                </div>
+            </div>
+            <div class="modal-body normal-padding">
+                <div>An Incident is triggered in a Service and will assign to users following the selected Escalation rule
+                </div>
+                <div  style="margin-top: 20px">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="incident-name">Incident name</label>
+                        <input id="incident-name" type="text" class="form-control vc-input" formControlName="name" placeholder="Name" aria-label="name"
+                            aria-describedby="incident-name-des"  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required" style="color: red;font-weight: bold;">Name is required</div>
+                        </div>
+                        <label id="incident-name-des" class="help-text">
+                            Only letters (a-z, A-Z, 0-9, '.', '@', '_', '-', space) are allowed. Your input data length must
+                            be between 5 and 50.
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="incident-des">Description</label>
+                        <input id="incident-des" type="text" class="form-control vc-input" formControlName="description" placeholder="Description"
+                            aria-label="des" aria-describedby="incident-des-des">
+                        <label id="incident-des-des" class="help-text">
+                            Optional. Giving your incident a description will help you distinguish the incidents better.
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="incident-service">Service</label>
+                        <div class="form-btn-group">
+                            <div class="vc-select" style="display: inline-block; width: 300px;">
+                                <select id="incident-service" class="form-control" formControlName="service" aria-label="service" aria-describedby="incident-service-des" *ngFor="let service of services">
+                                    <option value="{{service.id}}" name="showing-select">{{service.name}}</option>
+                                </select>
+                                <svg class="vcicon icon-gr-expand">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>
+                                </svg>
+                            </div>
+                            <button type="button" class="btn icon-btn default" style="margin-left: 10px;" data-title="Reload services">
+                                <svg class="vcicon icon-reload">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-reload"></use>
+                                </svg>
+                            </button>
+                        </div>
+                        <label id="incident-service-des" class="help-text">
+                            An incident will belong to a certain service. Select a service to create this incident for.
+                            <a href="#">Click here to create one if you don’t have a service.</a>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="block" for="incident-urgency">Urgency</label>
+                        <div class="vc-select" style="width: 300px;">
+                            <select id="incident-urgency" class="form-control" formControlName="urgency" aria-label="urgency" aria-describedby="incident-urgency-des">
+                                <option value="high" name="showing-select">High</option>
+                                <option value="low" name="showing-select">Low</option>
+                            </select>
+                            <svg class="vcicon icon-gr-expand">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>
+                            </svg>
+                        </div>
+                        <label id="incident-urgency-des" class="help-text">
+                            Choose how urgent this incident is so that assigned users will prioritize it if neccessary.
+                        </label>
+                    </div>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <div class="right-section">
+                    <div class="btn-group">
+                        <button type="button" (click)="close()" class="btn btn-default close">
+                            <svg class="vcicon icon-close">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-close"></use>
+                            </svg>
+                            <span>Close</span>
+                        </button>
+                        <button type="submit" class="btn btn-default create">
+                            <svg class="vcicon icon-create-incident">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-create-incident"></use>
+                            </svg>
+                            <span>Create</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

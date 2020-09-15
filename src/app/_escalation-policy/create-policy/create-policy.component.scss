@@ -1,0 +1,90 @@
+@import "variables";
+
+.rule-list {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+
+    > * {
+        margin-bottom: 10px;
+        border-radius: 10px;
+        z-index: 1;
+    }
+
+    .rule-box {
+        display: flex;
+        position: relative;
+        background: $color-grey-100-100;
+        border: 1px solid $color-grey-350-100;
+
+        .section {
+            padding: 10px 20px;
+
+            &.notify-section {
+                width: 75%;
+                padding-left: 46px;
+                border-right: 1px solid $color-grey-300-100;
+                box-sizing: border-box;
+            }
+
+            &.timeout-section {
+                width: 25%;
+                box-sizing: border-box;
+            }
+        }
+
+        &:before {
+            content: attr(order);
+            display: block;
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: $color-royal-blue-100;
+            color: $color-white-100;
+            font-weight: 600;
+            text-align: center;
+            padding-top: 5px;
+            top: 10px;
+            left: 10px;
+            border-radius: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    .add-rule-btn {
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .repetition {
+        display: inline-block;
+        background: $color-white-100;
+        border: 1px solid $color-grey-350-100;
+        padding: 10px 12px;
+
+        .repetition-label {
+            display: inline-block;
+            font-weight: 500;
+            margin-left: 10px;
+
+            .vc-input {
+                display: inline-block;
+                width: 52px;
+                height: 24px;
+                margin: -4px 10px;
+                padding: 0 10px;
+            }
+        }
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: calc(100% - 30px);
+        width: 1px;
+        background: $color-grey-350-100;
+        top: 10px;
+        left: 23px;
+        z-index: -1;
+    }
+}

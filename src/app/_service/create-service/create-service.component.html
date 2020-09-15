@@ -1,0 +1,152 @@
+<nav class="vc-navbar">
+    <img src="assets/imgs/logo.svg" class="vc-logo">
+    <div class="right-section">
+        <div class="nav-section">
+            <div class="avatar vc-dropdown-container">
+                <span (click)="showDropdown($event)">D</span>
+                <div class="vc-dropdown">
+                    <div class="dropdown-group">
+                        <div class="title-item">
+                            <span>nguyendhn@vng.com.vn</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-group">
+                        <div class="menu-item">
+                            <svg class="vcicon icon-logout">
+                                <use xlink:href="assets/vcicon/icons.svg#icon-logout"></use>
+                            </svg>
+                            <span>Log out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-content">
+    <div class="main-content">
+        <div class="vc-base-bar fixed full-width">
+            <div class="main-bar">
+                <div class="page-header">
+                    <div class="page-title">Create Service</div>
+                    <div class="page-description">
+                        <span>A Service will need some general information, its escalation policy and routing keys.</span>
+                    </div>
+                </div>
+                <div class="bulletin">
+                    <button type="button" class="btn btn-default create">
+                        <svg class="vcicon icon-create-service">
+                            <use xlink:href="assets/vcicon/icons.svg#icon-create-service"></use>
+                        </svg>
+                        <span>Create</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="standard-content big-padding" style="padding-top: 97px;">
+
+            <div class="big-section" style="width: 65%">
+
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="title">Service information</div>
+                        <div class="description">Give us some basic information for the new service</div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="service-name">Service name</label>
+                        <input id="service-name" type="text" class="vc-input" placeholder="Name" aria-label="name"
+                            aria-describedby="service-name-des" style="width: 500px">
+                        <label id="service-name-des" class="help-text">
+                            Only letters (a-z, A-Z, 0-9, '.', '@', '_', '-', space) are allowed. Your input data length must
+                            be between 5 and 50.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-des">Description</label>
+                        <input id="service-des" type="text" class="vc-input" placeholder="Description" aria-label="description"
+                            aria-describedby="service-des-des" style="width: 500px">
+                        <label id="service-des-des" class="help-text">
+                            Optional. Giving your policy a description will help you distinguish the services better.
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="big-section" style="width: 65%; margin-top: 50px;">
+
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="title">Escalation policy</div>
+                        <div class="description">
+                            Choose an escalation policy for this service so that whenever there is an incident, the service will know who to call and when to call them.
+                            <a href="#">Click here to create one if you don’t have a policy.</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <div class="form-btn-group">
+                            <div class="vc-select" style="display: inline-block; width: 300px;">
+                                <select id="service-service" aria-label="service">
+                                    <option value="1" name="showing-select">esc-policy-1</option>
+                                    <option value="2" name="showing-select">esc-policy-2</option>
+                                    <option value="3" name="showing-select">esc-policy-3</option>
+                                    <option value="4" name="showing-select">esc-policy-4</option>
+                                    <option value="5" name="showing-select">esc-policy-5</option>
+                                </select>
+                                <svg class="vcicon icon-gr-expand">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>
+                                </svg>
+                            </div>
+                            <button type="button" class="btn icon-btn default" style="margin-left: 10px;" data-title="Reload policies">
+                                <svg class="vcicon icon-reload">
+                                    <use xlink:href="assets/vcicon/icons.svg#icon-reload"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="big-section" style="width: 65%; margin-top: 50px; margin-bottom: 20px;">
+
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="title">Routing key</div>
+                        <div class="description">Give us some basic information for the new service</div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="integration-name">Integration name</label>
+                        <input id="integration-name" type="text" class="vc-input" placeholder="Name" aria-label="name" style="width: 500px">
+                    </div>
+                    <div class="form-group">
+                        <label for="integration-type">Integration type</label>
+                        <div style="margin-top: 5px;">
+                            <label class="vc-radio radio-box">
+                                <input type="radio" checked name="integration-type">
+                                <span class="checkmark"></span>
+                                <div class="rb-label">
+                                    <div class="label">API token</div>
+                                    <div class="label-des">Use our API for integration</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

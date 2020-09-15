@@ -1,0 +1,40 @@
+@import "variables";
+
+.expand-btn {
+    font-weight: 500;
+    color: $color-grey-650-100;
+    fill: $color-grey-650-100;
+    cursor: pointer;
+
+    .vcicon {
+        margin-left: 5px;
+        vertical-align: top;
+        transform: rotate(-90deg);
+
+        &.expanded {
+            transform: rotate(0deg);
+        }
+    }
+}
+
+.copiable-text {
+    display: flex;
+    width: auto;
+
+    >* {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .btn {
+        margin-left: 5px;
+    }
+
+    input {
+        width: 1px;
+        height: 1px;
+        border: 0;
+        outline: 0;
+        opacity: 0;
+    }
+}
