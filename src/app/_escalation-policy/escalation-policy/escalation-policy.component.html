@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="action-group">
-                        <button type="button" (click)="CreatePolicy()" class="btn btn-default create">
+                        <button type="button" class="btn btn-default create">
                             <svg class="vcicon icon-create-escale-policy">
                                 <use xlink:href="assets/vcicon/icons.svg#icon-create-escale-policy"></use>
                             </svg>
@@ -155,7 +155,8 @@
                     </thead>
 
                     <tbody>
-                        <tr id="esc-policy-1">
+                        <div style="width: 100%;">
+                          <tr id="esc-policy-1">
                             <td style="width: 40%">
                                 <svg class="vcicon icon-collapse-sm expand-btn" (click)="showDetail($event)">
                                     <use xlink:href="assets/vcicon/icons.svg#icon-collapse-sm"></use>
@@ -249,6 +250,7 @@
                                 </div>
                             </td>
                         </tr>
+                        </div>
                         <tr id="esc-policy-2">
                             <td width="40%">
                                 <svg class="vcicon icon-collapse-sm expand-btn" (click)="showDetail($event)">

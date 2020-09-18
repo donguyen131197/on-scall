@@ -1,5 +1,8 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-
+import { Component, OnInit,Output,EventEmitter,Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router,ActivatedRoute } from '@angular/router';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-add-channel',
   templateUrl: './add-channel.component.html',
@@ -10,10 +13,22 @@ export class AddChannelComponent implements OnInit {
   isShowingAdvanced = false;
   isShowingSlackAuthen = true;
   isShowingSkypeIntegration = false;
+  @Input() serviceid: string; // decorate the property with @Input()
   @Output() ClosingAddingChannelModal = new EventEmitter<any>();
-  constructor() { }
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient,
+  ) { }
+  form: FormGroup;
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      name: [''],
+      type: [''],
+    });
+    if (localStorage.getItem('Authorization')==null){
+      this.router.navigateByUrl(`login?next=service`);
+    }
   }
 
   copyLink(event) {
@@ -41,5 +56,20 @@ export class AddChannelComponent implements OnInit {
   }
   close() {
     this.ClosingAddingChannelModal.emit();
+  }
+  get f() { return this.form.controls; }
+  onSubmit(){
+    console.log(this.f.type.value)
+    if (this.f.type.value=="skype"){
+
+      window.alert("Sorry, Skype channel is not support in this time!")
+    }
+    else{
+      const url= `https://slack.com/oauth/authorize?client_id=346859103684.1317997613826&scope=bot channels:read channels:write chat:write:bot chat:write:user commands groups:read groups:write im:read incoming-webhook team:read users:read&redirect_uri=https://channel.vngcloud.tech/service/${this.serviceid}/slack?name=${this.f.name.value}`
+      //console.log(window.location)
+      window.confirm("test")
+      window.open(url,"_self")
+
+    }
   }
 }

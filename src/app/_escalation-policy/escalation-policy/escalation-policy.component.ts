@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-escalation-policy',
   templateUrl: './escalation-policy.component.html',
@@ -8,10 +10,30 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class EscalationPolicyComponent implements OnInit {
 
   constructor(
-    private router:Router,
+    private http: HttpClient,
+    private router: Router,
   ) { }
-
-  ngOnInit(): void {
+  escalationes=[];
+  ngOnInit(  ): void {
+    //console.log("abc")
+    if (localStorage.getItem('Authorization')==null){
+      this.router.navigateByUrl(`login?next=escalation`);
+    }
+    const headers = { 'Authorization': localStorage.getItem('Authorization')}
+    const resp=this.http.get<any>(`${environment.apiUrl}escalation`, { headers ,observe: "response"})
+    //console.log(resp)
+    resp.subscribe(
+      (response: any) => {
+        localStorage.setItem('Authorization',response.headers.get('Authorization'))
+        this.escalationes=response.body
+        console.log(this.escalationes)
+      },
+      _error => {
+         if (_error.status==401) {
+          this.router.navigateByUrl(`user/login?next=escalation`);
+         }
+      }
+    );
   }
 
   showDropdown(event) {

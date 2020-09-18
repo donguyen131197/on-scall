@@ -25,7 +25,7 @@
 </nav>
 
 <div class="navbar-content">
-    <div class="main-content">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="main-content">
         <div class="vc-base-bar fixed full-width">
             <div class="main-bar">
                 <div class="page-header">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="bulletin">
-                    <button type="button" class="btn btn-default create">
+                    <button type="submit" class="btn btn-default create">
                         <svg class="vcicon icon-create-service">
                             <use xlink:href="assets/vcicon/icons.svg#icon-create-service"></use>
                         </svg>
@@ -59,8 +59,11 @@
                 <div class="section-content">
                     <div class="form-group" style="margin-bottom: 15px;">
                         <label for="service-name">Service name</label>
-                        <input id="service-name" type="text" class="vc-input" placeholder="Name" aria-label="name"
-                            aria-describedby="service-name-des" style="width: 500px">
+                        <input id="service-name" type="text" class="form-control vc-input" formControlName="name" placeholder="Name" aria-label="name"
+                            aria-describedby="service-name-des" style="width: 500px" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                              <div *ngIf="f.name.errors.required" style="color: red;font-weight: bold;">Name is required</div>
+                        </div>
                         <label id="service-name-des" class="help-text">
                             Only letters (a-z, A-Z, 0-9, '.', '@', '_', '-', space) are allowed. Your input data length must
                             be between 5 and 50.
@@ -68,7 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label for="service-des">Description</label>
-                        <input id="service-des" type="text" class="vc-input" placeholder="Description" aria-label="description"
+                        <input id="service-des" type="text" class="form-control vc-input" formControlName="description" placeholder="Description" aria-label="description"
                             aria-describedby="service-des-des" style="width: 500px">
                         <label id="service-des-des" class="help-text">
                             Optional. Giving your policy a description will help you distinguish the services better.
@@ -85,7 +88,7 @@
                         <div class="title">Escalation policy</div>
                         <div class="description">
                             Choose an escalation policy for this service so that whenever there is an incident, the service will know who to call and when to call them.
-                            <a href="#">Click here to create one if you don’t have a policy.</a>
+                            <a href="escalation/create">Click here to create one if you don’t have a policy.</a>
                         </div>
                     </div>
                 </div>
@@ -94,12 +97,8 @@
                     <div class="form-group" style="margin-bottom: 15px;">
                         <div class="form-btn-group">
                             <div class="vc-select" style="display: inline-block; width: 300px;">
-                                <select id="service-service" aria-label="service">
-                                    <option value="1" name="showing-select">esc-policy-1</option>
-                                    <option value="2" name="showing-select">esc-policy-2</option>
-                                    <option value="3" name="showing-select">esc-policy-3</option>
-                                    <option value="4" name="showing-select">esc-policy-4</option>
-                                    <option value="5" name="showing-select">esc-policy-5</option>
+                                <select id="service-service" aria-label="service" class="form-control" formControlName="escalation">
+                                    <option *ngFor="let escalation of escalations"  value="{{escalation.id}}" name="showing-select">{{escalation.name}}</option>
                                 </select>
                                 <svg class="vcicon icon-gr-expand">
                                     <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>
@@ -128,7 +127,7 @@
                 <div class="section-content">
                     <div class="form-group" style="margin-bottom: 15px;">
                         <label for="integration-name">Integration name</label>
-                        <input id="integration-name" type="text" class="vc-input" placeholder="Name" aria-label="name" style="width: 500px">
+                        <input id="integration-name" type="text" class="form-control vc-input" formControlName="routing_name" placeholder="Name" aria-label="name" style="width: 500px">
                     </div>
                     <div class="form-group">
                         <label for="integration-type">Integration type</label>
@@ -148,5 +147,5 @@
             </div>
 
         </div>
-    </div>
+    </form>
 </div>

@@ -17,7 +17,7 @@ export class IncidentComponent implements OnInit {
   ) { }
   getClassSatus(status){
     switch (status) {
-      case "Trigger":
+      case "Triggered":
         return "danger";
       case "Resolved":
         return "success";
@@ -39,7 +39,7 @@ export class IncidentComponent implements OnInit {
       },
       _error => {
          if (_error.status==401) {
-          this.router.navigateByUrl(`login?next=incident`);
+          this.router.navigateByUrl(`user/login?next=incident`);
          }
 
       }

@@ -53,13 +53,13 @@
                 </svg>
                 <span>Incident</span>
             </a>
-            <a class="item active">
+            <a class="item active" href="/service">
                 <svg class="vcicon icon-service">
                     <use xlink:href="assets/vcicon/icons.svg#icon-service"></use>
                 </svg>
                 <span>Service</span>
             </a>
-            <a class="item" href="escalation-policy">
+            <a class="item" href="escalation">
                 <svg class="vcicon icon-escalation-policy">
                     <use xlink:href="assets/vcicon/icons.svg#icon-escalation-policy"></use>
                 </svg>
@@ -78,17 +78,17 @@
                         <span>Service</span>
                     </div>
                     <div class="page-title">
-                        <span>service-1</span>
-                        <span class="badge icon-badge danger">
+                        <span>{{service.name}}</span>
+                        <span class="badge icon-badge" [ngClass]="getClassSatus(service.status)">
                             <svg class="vcicon icon-incident">
                                 <use xlink:href="assets/vcicon/icons.svg#icon-incident"></use>
                             </svg>
-                            <span>Awaiting</span>
+                            <span>{{service.status}}</span>
                         </span>
                     </div>
                     <div class="page-description">
                         <span>Using Escalation policy</span>
-                        <a href="#" style="margin-left: 5px">esc-policy-1</a>
+                        <a href="escalation/{{service.escalation_id}}" style="margin-left: 5px">{{service.escalation_name}}</a>
                     </div>
                 </div>
                 <div class="bulletin btn-group">
@@ -129,7 +129,7 @@
             <div class="intro-mini">
                 <div class="intro-text">
                     <div class="recent-incident">
-                        <span class="count">3</span>
+                        <span class="count">{{service.incidents==null?0:service.incidents.length}}</span>
                         <span>incidents in the last 30 days.</span>
                     </div>
                     <p>Incidents are sorted from the most recent to the least recent.</p>
@@ -167,71 +167,31 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td class="status-tr-indicator danger"></td>
+                    <tr *ngFor="let incident of service.incidents">
+                        <td class="status-tr-indicator" [ngClass]="getClassSatus(incident.status)"></td>
                         <td>
-                            <div class="secondary">832fh9832f4341eq</div>
-                            <a href="/832fh9832f4341eq" class="primary">incident-1</a>
-                            <div class="tertiary">2:59PM, 26/8/2020</div>
+                            <div class="secondary">{{incident.id}}</div>
+                            <a href="/incident/{{incident.id}}" class="primary">{{incident.title}}</a>
+                            <div class="tertiary">{{incident.created}}</div>
                         </td>
                         <td>
-                            <span class="badge upper-badge danger">Triggered</span>
+                            <span class="badge upper-badge" [ngClass]="getClassSatus(incident.status)">{{incident.status}}</span>
                         </td>
                         <td>
-                            High
+                            {{incident.urgency}}
                         </td>
-                        <td>
-                            <a>nguyendhn</a>,
-                            <a>vund</a>
+                        <td >
+                            <a *ngFor="let user of incident.assign index as i">
+                            <a href="../user/{{user.id}}">{{user.name}}</a>
+                            <a *ngIf="i!= incident.assign.length-1 ">, </a>
+                            </a>
                         </td>
                         <td>
                             <div class="btn-group" style="text-align: right">
-                                <button type="button" class="btn btn-default other">
+                                <button type="button" class="btn btn-default other" *ngIf="checkStatusACK(incident.status)">
                                     <span>Acknowledge</span>
                                 </button>
-                                <button type="button" class="btn btn-default other">
-                                    <span>Resolve</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-tr-indicator success"></td>
-                        <td>
-                            <div class="secondary">8sdsafa7s67f2r7d</div>
-                            <a href="/8sdsafa7s67f2r7d" class="primary">incident-2</a>
-                            <div class="tertiary">2:41 PM, 26/8/2020</div>
-                        </td>
-                        <td>
-                            <span class="badge upper-badge success">Resolved</span>
-                        </td>
-                        <td>
-                            High
-                        </td>
-                        <td>
-                            -
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="status-tr-indicator warning"></td>
-                        <td>
-                            <div class="secondary">98safa7fsa98fsaf</div>
-                            <a href="/98safa7fsa98fsaf" class="primary">incident-3</a>
-                            <div class="tertiary">10:52 AM, 26/8/2020</div>
-                        </td>
-                        <td>
-                            <span class="badge upper-badge warning">Acknowledged</span>
-                        </td>
-                        <td>
-                            High
-                        </td>
-                        <td>
-                            <a>vinhph</a>
-                        </td>
-                        <td>
-                            <div class="btn-group" style="text-align: right;">
-                                <button type="button" class="btn btn-default other">
+                                <button type="button" class="btn btn-default other" *ngIf="checkStatusResovle(incident.status)">
                                     <span>Resolve</span>
                                 </button>
                             </div>
@@ -243,7 +203,7 @@
 
             <div class="pagination-complex">
                 <div class="total-record-section">
-                    <span>Total: 2</span>
+                    <span>Total: {{service.incidents==null?0:service.incidents.length}}</span>
                 </div>
                 <ul class="pagination">
                     <li class="page-move disabled">
@@ -322,39 +282,13 @@
                         </thead>
 
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let routingKey of service.routingKeys">
                                 <td>
-                                    <span class="primary">routing-key-1</span>
+                                    <span class="primary">{{routingKey.key}}</span>
                                 </td>
                                 <td>
                                     <div class="copiable-text">
-                                        <span class="key">aee69ef9edfa40d4b2f584aca401269b</span>
-                                        <div class="btn-container">
-                                            <button type="button" class="btn icon-btn default"
-                                                data-title="Copy this key" (click)="copyKey($event)">
-                                                <svg class="vcicon icon-copy">
-                                                    <use xlink:href="assets/vcicon/icons.svg#icon-copy"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <input>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn icon-btn delete" data-title="Delete this key">
-                                        <svg class="vcicon icon-delete">
-                                            <use xlink:href="assets/vcicon/icons.svg#icon-delete"></use>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="primary">routing-key-2</span>
-                                </td>
-                                <td>
-                                    <div class="copiable-text">
-                                        <span class="key">dc43eb16d4fd475da7ebbce2e4d8ccb2</span>
+                                        <span class="key">{{routingKey.name}}</span>
                                         <div class="btn-container">
                                             <button type="button" class="btn icon-btn default"
                                                 data-title="Copy this key" (click)="copyKey($event)">
@@ -380,7 +314,7 @@
 
                     <div class="pagination-complex">
                         <div class="total-record-section">
-                            <span>Total: 2</span>
+                            <span>Total: {{service.routingKeys==null?0:service.routingKeys.length}}</span>
                         </div>
                         <ul class="pagination">
                             <li class="page-move disabled">
@@ -454,15 +388,22 @@
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let channel of service.channels">
                             <td>
-                                <div class="channel-head">
+                                <div class="channel-head" *ngIf="channel.type=='slack'">
                                     <img src="assets/imgs/slack-logo.svg" class="channel-logo">
                                     <div class="channel-name">
-                                        <div class="primary">slack1</div>
-                                        <div class="secondary">Slack</div>
+                                        <div class="primary">{{channel.name}}</div>
+                                        <div class="secondary">{{channel.type}}</div>
                                     </div>
                                 </div>
+                                <div class="channel-head" *ngIf="channel.type=='skype'">
+                                  <img src="assets/imgs/skype-logo.svg" class="channel-logo">
+                                  <div class="channel-name">
+                                      <div class="primary">{{channel.name}}</div>
+                                      <div class="secondary">{{channel.type}}</div>
+                                  </div>
+                              </div>
                             </td>
                             <td>
                                 <ul class="channel-detail">
@@ -482,12 +423,12 @@
                                             <b>Low</b>
                                         </span>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <span class="name">Channel: </span>
                                         <span>
                                             <b><a href="#">#general</a></b>
                                         </span>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </td>
                             <td>
@@ -505,7 +446,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 <div class="channel-head">
                                     <img src="assets/imgs/skype-logo.svg" class="channel-logo">
@@ -554,7 +495,7 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
 
                 </table>
@@ -565,5 +506,5 @@
     </div>
 </div>
 
-<app-create-routing-key *ngIf="isShowingCreatingKeyModal" (ClosingCreatingKeyModal)="ClosingCreatingKeyModal()"></app-create-routing-key>
-<app-add-channel *ngIf="isShowingAddingChannelModal" (ClosingAddingChannelModal)="ClosingAddingChannelModal()"></app-add-channel>
+<app-create-routing-key *ngIf="isShowingCreatingKeyModal" [serviceid]="serviceID" (ClosingCreatingKeyModal)="ClosingCreatingKeyModal()" ></app-create-routing-key>
+<app-add-channel *ngIf="isShowingAddingChannelModal" [serviceid]="serviceID" (ClosingAddingChannelModal)="ClosingAddingChannelModal()"></app-add-channel>

@@ -1,6 +1,6 @@
 <div class="vc-modal-backdrop">
     <div class="vc-modal">
-        <div class="modal-dialog" style="width: 600px">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="modal-dialog" style="width: 600px">
             <div class="modal-header">
                 <div class="modal-title">
                     <span class="title">Add Channel</span>
@@ -10,16 +10,16 @@
                 <div>
                     <span>Connect Skype group or Slack channel to send notifications about incidents to.</span>
                 </div>
-                <form style="margin-top: 20px">
+                <div style="margin-top: 20px">
                     <div class="form-group" style="margin-bottom: 15px;">
                         <label for="channel-name">Channel name</label>
-                        <input id="channel-name" type="text" class="vc-input" placeholder="Name" aria-label="channel-name"
+                        <input id="channel-name" type="text" formControlName="name" class="vc-input" placeholder="Name" aria-label="channel-name"
                             aria-describedby="channel-name-des" style="width: 400px">
                     </div>
                     <div class="form-group">
                         <label>Channel type</label>
                         <div class="vc-select" style="display: block; width: 300px;">
-                            <select id="incident-service" aria-label="channel-type"
+                            <select id="incident-service" formControlName="type" aria-label="channel-type"
                                 aria-describedby="incident-service-des" (click)="changeChannelType($event)">
                                 <option value="slack" name="showing-select">Slack</option>
                                 <option value="skype" name="showing-select">Skype</option>
@@ -66,7 +66,7 @@
                                 aria-label="skype-id" aria-describedby="skype-id">
                         </div>
                     </div>
-                </form>
+                  </div>
             </div>
             <div class="modal-body normal-padding seperated">
                 <div class="expand-btn" (click)="isShowingAdvanced = !isShowingAdvanced">
@@ -147,7 +147,7 @@
                             </svg>
                             <span>Close</span>
                         </button>
-                        <button type="button" class="btn btn-default create">
+                        <button type="submit" class="btn btn-default create">
                             <svg class="vcicon icon-add-channel">
                                 <use xlink:href="assets/vcicon/icons.svg#icon-add-channel"></use>
                             </svg>
@@ -156,6 +156,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>

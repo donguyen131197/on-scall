@@ -53,13 +53,13 @@
                 </svg>
                 <span>Incident</span>
             </a>
-            <a class="item active">
+            <a class="item active" href="service">
                 <svg class="vcicon icon-service">
                     <use xlink:href="assets/vcicon/icons.svg#icon-service"></use>
                 </svg>
                 <span>Service</span>
             </a>
-            <a class="item" href="escalation-policy">
+            <a class="item" href="escalation">
                 <svg class="vcicon icon-escalation-policy">
                     <use xlink:href="assets/vcicon/icons.svg#icon-escalation-policy"></use>
                 </svg>
@@ -159,77 +159,38 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td class="status-tr-indicator danger"></td>
+                    <tr *ngFor="let service of services">
+                        <td class="status-tr-indicator" [ngClass]="getClassSatus(service.status)"></td>
                         <td>
-                            <a class="primary">service-1</a>
+                            <a href="service/{{service.id}}" class="primary">{{service.name}}</a>
                             <div style="margin-top: 3px;">
-                                <span class="badge icon-badge danger">
+                                <span class="badge icon-badge" [ngClass]="getClassSatus(service.status)">
                                     <svg class="vcicon icon-incident">
                                         <use xlink:href="assets/vcicon/icons.svg#icon-incident"></use>
                                     </svg>
-                                    <span>Awaiting</span>
+                                    <span>{{service.status}}</span>
                                 </span>
                             </div>
                         </td>
                         <td>
-                            vServer
+                          {{service.description}}
                         </td>
                         <td>
-                            <a href="#">Today at 2:59PM</a>
+                            <a href="/incident/{{service.last_incident_id}}" *ngIf="service.last_incident!=''">{{service.last_incident}}</a>
+                            <span class="no-incident" *ngIf="service.last_incident==''">No incidents lately</span>
                         </td>
                         <td>
-                            <div class="open-incident noteworthy">
-                                <span class="count">1</span>
+                            <div class="open-incident"[ngClass]="getClassNumber(service.triggered)" >
+                                <span class="count">{{service.triggered}}</span>
                                 <span>triggered</span>
                             </div>
-                            <div class="open-incident">
-                                <span class="count">0</span>
+                            <div class="open-incident" [ngClass]="getClassNumber(service.acknowledged)">
+                                <span class="count">{{service.acknowledged}}</span>
                                 <span>acknowledged</span>
                             </div>
                         </td>
                         <td>
-                            10:25 26/8/2020
-                        </td>
-                        <td>
-                            <button type="button" class="btn icon-btn default" data-title="Menu" data-title-left>
-                                <svg class="vcicon icon-menu">
-                                    <use xlink:href="assets/vcicon/icons.svg#icon-menu"></use>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="status-tr-indicator success"></td>
-                        <td>
-                            <a class="primary">service-1</a>
-                            <div style="margin-top: 3px;">
-                                <span class="badge icon-badge success">
-                                    <svg class="vcicon icon-save">
-                                        <use xlink:href="assets/vcicon/icons.svg#icon-save"></use>
-                                    </svg>
-                                    <span>OK</span>
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            vServer
-                        </td>
-                        <td>
-                            <span class="no-incident">No incidents lately</span>
-                        </td>
-                        <td>
-                            <div class="open-incident">
-                                <span class="count">0</span>
-                                <span>triggered</span>
-                            </div>
-                            <div class="open-incident">
-                                <span class="count">0</span>
-                                <span>acknowledged</span>
-                            </div>
-                        </td>
-                        <td>
-                            10:25 26/8/2020
+                          {{service.created}}
                         </td>
                         <td>
                             <button type="button" class="btn icon-btn default" data-title="Menu" data-title-left>
@@ -245,7 +206,7 @@
 
             <div class="pagination-complex">
                 <div class="total-record-section">
-                    <span>Total: 2</span>
+                    <span>Total: {{services==null?0:services.length}}</span>
                 </div>
                 <ul class="pagination">
                     <li class="page-move disabled">

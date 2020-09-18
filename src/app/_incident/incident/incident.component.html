@@ -47,7 +47,7 @@
                 </svg>
                 <span>Overview</span>
             </a>
-            <a class="item active">
+            <a class="item active" href="incident">
                 <svg class="vcicon icon-incident">
                     <use xlink:href="assets/vcicon/icons.svg#icon-incident"></use>
                 </svg>
@@ -59,7 +59,7 @@
                 </svg>
                 <span>Service</span>
             </a>
-            <a class="item" href="escalation-policy">
+            <a class="item" href="escalation">
                 <svg class="vcicon icon-escalation-policy">
                     <use xlink:href="assets/vcicon/icons.svg#icon-escalation-policy"></use>
                 </svg>
@@ -215,9 +215,11 @@
                       <td>
                           <a href="/service/{{ incident.service_id }}">{{ incident.service_name }}</a>
                       </td>
-                      <td>
-                          <a>nguyendhn</a>,
-                          <a>vund</a>
+                      <td >
+                          <a *ngFor="let user of incident.assign index as i">
+                            <a href="../user/{{user.id}}">{{user.name}}</a>
+                            <a *ngIf="i!= incident.assign.length-1 ">, </a>
+                          </a>
                       </td>
                       <td>
                           <button type="button" class="btn icon-btn edit" data-title="Edit incident" data-title-left>
@@ -233,7 +235,7 @@
 
             <div class="pagination-complex">
                 <div class="total-record-section">
-                    <span>Total: {{incidents.length}}</span>
+                    <span>Total: {{incidents==null?0:incidents.length}}</span>
                 </div>
                 <ul class="pagination">
                     <li class="page-move disabled">

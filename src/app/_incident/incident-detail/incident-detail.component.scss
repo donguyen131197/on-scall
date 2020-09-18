@@ -23,15 +23,15 @@
     .act-name {
         font-weight: 600;
 
-        &.solved {
+        &.Resolved {
             color: $color-apple-100;
         }
 
-        &.acknowledged {
+        &.Acknowledged {
             color: $color-web-orange-100;
         }
 
-        &.triggered {
+        &.Triggered {
             color: $color-red-orange-100;
         }
     }

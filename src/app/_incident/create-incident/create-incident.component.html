@@ -34,8 +34,8 @@
                         <label for="incident-service">Service</label>
                         <div class="form-btn-group">
                             <div class="vc-select" style="display: inline-block; width: 300px;">
-                                <select id="incident-service" class="form-control" formControlName="service" aria-label="service" aria-describedby="incident-service-des" *ngFor="let service of services">
-                                    <option value="{{service.id}}" name="showing-select">{{service.name}}</option>
+                                <select id="incident-service" class="form-control" formControlName="service" aria-label="service" aria-describedby="incident-service-des" >
+                                    <option *ngFor="let service of services" value="{{service.id}}" name="showing-select">{{service.name}}</option>
                                 </select>
                                 <svg class="vcicon icon-gr-expand">
                                     <use xlink:href="assets/vcicon/icons.svg#icon-gr-expand"></use>

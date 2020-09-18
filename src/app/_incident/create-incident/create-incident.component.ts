@@ -69,10 +69,10 @@ export class CreateIncidentComponent implements OnInit {
       console.log(_error)
     }
     );
-    console.log(this.f.urgency.value)
-    console.log(this.f.service.value)
-    console.log(this.f.description.value)
-    console.log(this.f.name.value)
+    //console.log(this.f.urgency.value)
+    //console.log(this.f.service.value)
+    //console.log(this.f.description.value)
+    //console.log(this.f.name.value)
   }
   close() {
     this.newCloseEvent.emit();
